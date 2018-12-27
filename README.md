@@ -1,0 +1,2 @@
+# NagiConfig
+Nagios configuration tool.
