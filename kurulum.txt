@@ -41,3 +41,29 @@ python manage.py runserver
 apt-get install git
 git config --global user.name "Aytekin Aygün"
 git config --global user.email aytekinaygun@gmail.com
+git clone https://github.com/aytekinaygun/NagiConfig.git
+git add .
+git commit -m "mesaj"
+pit push origin master
+
+
+# ADMIN SAYFASI
+python manage.py migrate
+python manage.py createsuperuser
+
+# APP OLUŞTUR
+python manage.py startapp host_groups
+python manage.py startapp hosts
+python manage.py startapp services
+
+# app'i settings'e ekle
+
+# MODEL
+# model oluştur. Sonra veritabanına işle.
+manage.py makemigrations
+python manage.py migrate
+
+# YENİ APP'İN ADMİN SAYFASINDA GÖRÜLMESİ
+# app dizininin altındaki admin.py
+from .models import Host_Groups <-- DİKKAT! Host_Groups model adıdır.
+admin.site.register(Host_Groups)

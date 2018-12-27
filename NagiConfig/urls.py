@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from host_groups.views import *
+from home.views import *
 
 urlpatterns = [
+    path('', home_view),
     path('admin/', admin.site.urls),
-]
+    path('host_groups_view/', host_groups_view),
+    path('host_groups_create/', host_groups_create),
+    ]
