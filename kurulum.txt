@@ -1,0 +1,43 @@
+### VIRTUALENV KURULUM
+# En yeni sürümü yükle
+apt-get install python3.x
+
+# pip yükle
+apt-get install python3-pip
+
+# virtualenv kur
+pip3 install virtualenv
+
+# proje dizini oluştur
+mkdir ...../NagiConfig
+cd ....../NigiConfig
+
+# dizinin içindeyken (python3 kullanmak için)
+virtualenv -p python3 my_env
+
+# çalıştır
+source ./my_env/bin/activate
+
+# durdur
+deactivate
+
+### DJANGO KURULUM
+# versiyonları görmek için
+pip3 install django==
+
+# son versiyonu kurar
+pip3 install django
+
+
+### AYARLAR
+# settings.py
+LANGUAGE_CODE = 'tr'
+TIME_ZONE = 'Europe/Istanbul'
+
+# server çalıştır
+python manage.py runserver
+
+# GIT KURULUM VE AYARLAR
+apt-get install git
+git config --global user.name "Aytekin Aygün"
+git config --global user.email aytekinaygun@gmail.com
