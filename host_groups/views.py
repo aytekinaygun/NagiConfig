@@ -10,23 +10,12 @@ def host_groups_view(request):
     }
     return render(request, 'host_groups_view.html', context)
 
+
 def host_groups_create(request):
-
-    # if request.method == "POST":
-    #     # Formu kaydet
-    #     form = HostGroupsForm(request.POST)
-    #     if form.is_valid(): # form doğru şekilde doldu ise kaydet
-    #         form.save()
-    # else:
-    #     # Formu göster
-    #     form = HostGroupsForm()
-
     form = HostGroupsForm(request.POST or None)
     if form.is_valid(): # form doğru şekilde doldu ise kaydet
         form.save()
-
     context = {
         'form' : form,
     }
-
     return render(request, 'host_groups_create.html', context)
