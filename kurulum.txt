@@ -45,6 +45,8 @@ git clone https://github.com/aytekinaygun/NagiConfig.git
 git add .
 git commit -m "mesaj"
 pit push origin master
+git add . && git commit -m "....." && git push origin master
+
 
 
 # ADMIN SAYFASI

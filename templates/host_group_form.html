@@ -1,13 +1,7 @@
-<!doctype html>
-<html>
-<head>
-<title>NagiConfig - {{ title }}</title>
+{% extends 'base.html' %}
 
-<meta charset="utf-8">
-<meta name="description" content="Our first page">
-<meta name="keywords" content="html tutorial template">
-</head>
-<body>
+{% block content %}
+
   <h1>{{ title }}</h1>
   <form method="post">
     {% csrf_token %}
@@ -15,5 +9,5 @@
     {{ form.as_p }}
     <input type="submit" value="Gönder">
   </form>
-</body>
-</html>
+
+{% endblock %}

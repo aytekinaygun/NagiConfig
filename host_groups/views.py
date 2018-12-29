@@ -42,4 +42,5 @@ def host_groups_update(request, id):
 def host_groups_delete(request, id):
     hg = get_object_or_404(Host_Groups, id=id)
     hg.delete()
+    messages.success(request, 'Silme başarılı.')
     return redirect('/host_groups_index/')
