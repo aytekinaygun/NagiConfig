@@ -19,9 +19,10 @@ from host_groups.views import *
 from home.views import *
 
 urlpatterns = [
-    path('', home_view),
+    path('', home_index),
     path('admin/', admin.site.urls),
-    path('host_groups_view/', host_groups_view),
+    path('host_groups_index/', host_groups_index),
     path('host_groups_create/', host_groups_create),
     path('host_groups_update/<int:id>/', host_groups_update),
+    path('host_groups_delete/<int:id>/', host_groups_delete),
     ]

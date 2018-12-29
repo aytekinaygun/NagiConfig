@@ -1,0 +1,29 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>NagiConfig - {{ title }}</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="Our first page">
+  <meta name="keywords" content="html tutorial template">
+</head>
+<h1>{{ title }}</h1>
+<body>
+  <!-- mesajlar  -->
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+
+  {% for hg in host_groups %}
+  {{ hg.id }} ..
+  <a href="/host_groups_update/{{ hg.id }}">{{ hg.hostgroup_name }}</a>
+  {{ hg.alias }} <a href="/host_groups_delete/{{ hg.id }}">   Sil</a> <br>
+  {% endfor %}
+</body>
+</html>

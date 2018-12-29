@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
 <head>
-<title>NagiConfig Home</title>
+<title>NagiConfig - {{ title }}</title>
 
 <meta charset="utf-8">
 <meta name="description" content="Our first page">
 <meta name="keywords" content="html tutorial template">
 </head>
 <body>
+  <h1>{{ title }}</h1>
   <form method="post">
     {% csrf_token %}
     <!-- as_p : paragraf demek. form alanlarını alt alta sıralar. -->
