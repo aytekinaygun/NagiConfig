@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from host_groups.models import Host_Groups
 from .forms import HostGroupsForm
 
-# Create your views here.
 def host_groups_view(request):
     host_groups = Host_Groups.objects.all()
     context = {
@@ -18,4 +17,15 @@ def host_groups_create(request):
     context = {
         'form' : form,
     }
-    return render(request, 'host_groups_create.html', context)
+    return render(request, 'host_group_form.html', context)
+
+
+def host_groups_update(request, id):
+    hg = get_object_or_404(Host_Groups, id=id)
+    form = HostGroupsForm(request.POST or None, instance=hg) # formu doldur
+    if form.is_valid(): # form doğru şekilde doldu ise kaydet
+        form.save()
+    context = {
+        'form' : form,
+    }
+    return render(request, 'host_group_form.html', context)
