@@ -1,13 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- content header -->
+<section class="content-header">
+  <h2>
+    {{ title }}
+  </h2>
+</section>
 
-  <h1>{{ title }}</h1>
-  <form method="post">
-    {% csrf_token %}
-    <!-- as_p : paragraf demek. form alanlarını alt alta sıralar. -->
-    {{ form.as_p }}
-    <input type="submit" value="Gönder">
-  </form>
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Quick Example</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="{{ form.hostgroup_name.id_for_label }}">Host Grubu Adı:</label>
+              {{ form.hostgroup_name }}
+              <input class="form-control" placeholder="Enter ..." type="text">
+            </div>
+            <div class="form-group">
+              <label for="{{ form.alias.id_for_label }}">Host Grubu Açıklaması:</label>
+              {{ form.alias }}
+              <input class="form-control" placeholder="Enter ..." type="text">
+            </div>
+          </div>
+
+          <form method="post">
+            {% csrf_token %}
+            <!-- as_p : paragraf demek. form alanlarını alt alta sıralar. -->
+            {{ form.as_p }}
+            <input type="submit" value="Gönder">
+          </form>
+
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+</section>
+<!-- /.content header -->
 
 {% endblock %}
