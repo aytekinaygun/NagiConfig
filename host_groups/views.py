@@ -16,7 +16,7 @@ def host_groups_create(request):
     form = HostGroupsForm(request.POST or None)
     if form.is_valid(): # form doğru şekilde doldu ise kaydet
         hg = form.save()
-        messages.success(request, 'Yeni kayıt başarılı.')
+        messages.success(request, 'Yeni kayıt başarılı.', extra_tags='alert-success')
         return redirect('/host_groups_index/') # kayıtdan sonra buraya dön
     context = {
         'form' : form,
@@ -30,7 +30,7 @@ def host_groups_update(request, id):
     form = HostGroupsForm(request.POST or None, instance=hg) # formu doldur
     if form.is_valid(): # form doğru şekilde doldu ise kaydet
         form.save()
-        messages.success(request, 'Güncelleme başarılı.')
+        messages.success(request, 'Güncelleme başarılı.', extra_tags='alert-success')
         return redirect('/host_groups_index/') # kayıtdan sonra buraya dön
     context = {
         'form' : form,

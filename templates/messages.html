@@ -1,0 +1,14 @@
+<!-- mesajlar -->
+{% if messages %}
+{% for message in messages %}
+
+{% if message.extra_tags %}
+  <div class="alert {{ message.extra_tags }} alert-dismissible">
+{% endif %}
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h4>{{ message }}</h4>
+  </div>
+
+{% endfor %}
+{% endif %}
+<!-- /.mesajlar -->

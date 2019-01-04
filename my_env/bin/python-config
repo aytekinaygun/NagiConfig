@@ -1,4 +1,4 @@
-#!/home/ubuntu1804/projeler/NagiConfig/my_env/bin/python
+#!/home/aytekin/projeler/NagiConfig/my_env/bin/python
 
 import sys
 import getopt

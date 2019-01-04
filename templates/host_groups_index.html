@@ -1,20 +1,86 @@
 {% extends 'base.html' %}
 
+{% block headlink-add %}
+<!-- DataTables -->
+<link rel="stylesheet" href="/static/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+{% endblock %}
+
+
 {% block content %}
+  <!-- content header -->
+  <section class="content-header">
+    {% include "messages.html" %}
+    <h1>
+      Host Grupları
+    </h1>
+  </section>
+  <!-- /.content header -->
 
-    <!-- mesajlar  -->
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title"></h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="hostgroups" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Sıra No</th>
+                <th>Grup Adı</th>
+                <th>Grup Açıklaması</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!-- Host Grubu Tablosu -->
+              {% for hg in host_groups %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ hg.hostgroup_name }}</td>
+                <td>{{ hg.alias }}</td>
+                <td>
+                  <a href="/host_groups_update/{{ hg.id }}">
+                  <button type="button" class="btn btn-block btn-warning btn-xs">Güncelle</button>
+                  </a>
+                </td>
+                <td>
+                  <a href="/host_groups_delete/{{ hg.id }}">
+                  <button type="button" class="btn btn-block btn-danger btn-xs">Sil</button>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+              <!-- /.Host Grubu Tablosu -->
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+{% endblock %}
 
-    {% for hg in host_groups %}
-    {{ hg.id }} ..
-    <a href="/host_groups_update/{{ hg.id }}">{{ hg.hostgroup_name }}</a>
-    {{ hg.alias }} <a href="/host_groups_delete/{{ hg.id }}">   Sil</a> <br>
-    {% endfor %}
 
+{% block footer-add %}
+  <!-- DataTables -->
+  <script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#hostgroups').DataTable({
+      'searching'   : true
+      })
+    })
+  </script>
 {% endblock %}
