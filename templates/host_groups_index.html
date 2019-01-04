@@ -9,10 +9,16 @@
 {% block content %}
   <!-- content header -->
   <section class="content-header">
-    {% include "messages.html" %}
     <h1>
       Host Grupları
     </h1>
+    <br>
+    <div class="col-xs-3">
+      <a href="/host_groups_create">
+      <button type="button" class="btn btn-block btn-success btn-md">Yeni Grup Oluştur</button>
+      </a>
+    </div>
+    <br><br>
   </section>
   <!-- /.content header -->
 
@@ -20,6 +26,7 @@
   <section class="content">
     <div class="row">
       <div class="col-xs-12">
+        {% include "messages.html" %}
         <div class="box">
           <div class="box-header">
             <h3 class="box-title"></h3>
