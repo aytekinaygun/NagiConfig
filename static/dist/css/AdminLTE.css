@@ -23,6 +23,13 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+/* NagiConfig */
+.errorlist {
+  color: red;
+}
+
+
 /* Layout */
 .wrapper {
   height: 100%;

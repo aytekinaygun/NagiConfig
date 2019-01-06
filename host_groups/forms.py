@@ -7,5 +7,9 @@ class HostGroupsForm(forms.ModelForm):
         model = Host_Groups
         fields = [
             'hostgroup_name',
-            'alias',            
+            'alias',
         ]
+        widgets = {
+            'hostgroup_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: linux_sunucu'}),
+            'alias': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Linux Sunucular'}), 
+        }
