@@ -35,7 +35,8 @@ def host_groups_update(request, id):
     context = {
         'form'   : form,
         'title'  : 'Host Grubunu Güncelle',
-        'update' : 'yes'
+        'update' : 'yes',
+        'id'     : id,
     }
     return render(request, 'host_group_form.html', context)
 
