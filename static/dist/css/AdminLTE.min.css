@@ -12,10 +12,23 @@ body{
     overflow-y:auto
 }
 
+/* ###################################### */
 /* NagiConfig */
+/* ###################################### */
 .errorlist {
   color: red;
 }
+
+.submit-row {
+    padding: 12px 14px;
+    margin: 40px 0 20px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-align: right;
+    overflow: hidden;
+}
+/* ###################################### */
 
 .wrapper{
     height:100%;

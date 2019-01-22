@@ -33,8 +33,9 @@ def host_groups_update(request, id):
         messages.success(request, 'Güncelleme başarılı.', extra_tags='alert-success')
         return redirect('/host_groups_index/') # kayıtdan sonra buraya dön
     context = {
-        'form' : form,
-        'title': 'Host Grubunu Güncelle',
+        'form'   : form,
+        'title'  : 'Host Grubunu Güncelle',
+        'update' : 'yes'
     }
     return render(request, 'host_group_form.html', context)
 
