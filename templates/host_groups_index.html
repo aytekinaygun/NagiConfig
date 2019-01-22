@@ -39,7 +39,6 @@
                 <th>Sıra No</th>
                 <th>Grup Adı</th>
                 <th>Grup Açıklaması</th>
-                <th>Güncelle</th>
               </tr>
               </thead>
               <tbody>
@@ -47,13 +46,8 @@
               {% for hg in host_groups %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ hg.hostgroup_name }}</td>
+                <td><a href="/host_groups_update/{{ hg.id }}">{{ hg.hostgroup_name }}</a></td>
                 <td>{{ hg.alias }}</td>
-                <td style="width: 70px;">
-                  <a href="/host_groups_update/{{ hg.id }}">
-                  <button type="button" class="btn btn-block btn-warning btn-xs">Güncelle</button>
-                  </a>
-                </td>
               </tr>
               {% endfor %}
               <!-- /.Host Grubu Tablosu -->
