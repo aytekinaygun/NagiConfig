@@ -8,7 +8,7 @@ def host_groups_index(request):
     context = {
         'host_groups' : host_groups,
         'title' : 'Host Grupları',
-    }
+        }
     return render(request, 'host_groups_index.html', context)
 
 
@@ -21,12 +21,13 @@ def host_groups_create(request):
     context = {
         'form' : form,
         'title': 'Yeni Host Grubu Oluştur',
-    }
+        }
     return render(request, 'host_group_form.html', context)
 
 
 def host_groups_update(request, id):
     hg = get_object_or_404(Host_Groups, id=id)
+    print (hg)
     form = HostGroupsForm(request.POST or None, instance=hg) # formu doldur
     if form.is_valid(): # form doğru şekilde doldu ise kaydet
         form.save()
@@ -37,7 +38,7 @@ def host_groups_update(request, id):
         'title'  : 'Host Grubunu Güncelle',
         'update' : 'yes',
         'id'     : id,
-    }
+        }
     return render(request, 'host_group_form.html', context)
 
 
