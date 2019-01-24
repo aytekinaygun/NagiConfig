@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from host_groups.views import *
 from home.views import *
+from host_groups.views import *
+from hosts.views import *
+
 
 urlpatterns = [
     path('', home_index),
@@ -25,4 +27,6 @@ urlpatterns = [
     path('host_groups_create/', host_groups_create),
     path('host_groups_update/<int:id>/', host_groups_update),
     path('host_groups_delete/<int:id>/', host_groups_delete),
+    path('hosts_index/', hosts_index),
+    path('hosts_create/', hosts_create),
     ]

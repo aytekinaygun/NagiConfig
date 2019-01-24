@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block headlink-add %}
+<!-- DataTables -->
+<link rel="stylesheet" href="/static/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+{% endblock %}
+
+
+{% block content %}
+  <!-- content header -->
+  <section class="content-header">
+    <h2>
+      Hostlar
+    </h2>
+    <br>
+    <div class="col-xs-3">
+      <a href="/hosts_create">
+      <button type="button" class="btn btn-block btn-success btn-md">Yeni Host Oluştur</button>
+      </a>
+    </div>
+    <br><br>
+  </section>
+  <!-- /.content header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        {% include "messages.html" %}
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title"></h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="hosts" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Sıra No</th>
+                <th>Host Adı</th>
+                <th>Host Açıklaması</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!-- Host Grubu Tablosu -->
+              {% for h in hosts %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="/host_groups_update/{{ hg.id }}">{{ h.host_name }}</a></td>
+                <td>{{ h.alias }}</td>
+              </tr>
+              {% endfor %}
+              <!-- /.Host Grubu Tablosu -->
+              </tfoot>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+{% endblock %}
+
+
+{% block footer-add %}
+  <!-- DataTables -->
+  <script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#hosts').DataTable({
+      'searching'   : true
+      })
+    })
+  </script>
+{% endblock %}

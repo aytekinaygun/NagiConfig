@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # my app
     'home',
     'host_groups',
+    'hosts',
 ]
 
 MIDDLEWARE = [

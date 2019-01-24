@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- content header -->
+<section class="content-header">
+  <h2>
+    {{ title }}
+  </h2>
+</section>
+
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- box -->
+      <div class="box box-primary">
+          <div class="box-header with-border">
+            <!-- <h1 class="box-title">Quick Example</h1> -->
+            <p>Türkçe karakter kullanmayınız. Grup adlarında boşluk bırakmayınız.</p>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <!-- form start -->
+            <form class="col-md-6" role="form" method="post">
+              {% csrf_token %}
+              <!-- as_p : paragraf demek. form alanlarını alt alta sıralar. -->
+              {{ form.as_p }}
+              <div class="submit-row">
+                <!-- Sadece guncelleme sayfasında sil butonu görünür.  -->
+                {% if update  == "yes" %}
+                <a class="pull-right" href="/hosts_delete/{{ id }}">
+                  <button type="button" class="btn btn-block btn-danger">Sil</button>
+                </a>
+                {% endif %}
+                <input style="margin-right: 20px;" class="btn btn-primary pull-left" type="submit" value="Kaydet">
+                <a class="pull-left" href="/hosts_index">
+                  <button type="button" class="btn btn-block btn-default">Çık</button>
+                </a>
+              </div>
+            </form>
+          </div>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+</section>
+<!-- /.content header -->
+
+{% endblock %}

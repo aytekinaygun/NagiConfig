@@ -57,12 +57,11 @@ python manage.py createsuperuser
 python manage.py startapp host_groups
 python manage.py startapp hosts
 python manage.py startapp services
-
 # app'i settings'e ekle
 
 # MODEL
 # model oluştur. Sonra veritabanına işle.
-manage.py makemigrations
+python manage.py makemigrations
 python manage.py migrate
 
 # YENİ APP'İN ADMİN SAYFASINDA GÖRÜLMESİ
