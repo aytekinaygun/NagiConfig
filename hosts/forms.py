@@ -3,6 +3,7 @@ from .models import Hosts
 from host_groups.models import Host_Groups
 
 class HostsForm(forms.ModelForm):
+    hostgroups = forms.ModelMultipleChoiceField(queryset=Host_Groups.objects.all())
 
     class Meta:
         model = Hosts
@@ -16,5 +17,5 @@ class HostsForm(forms.ModelForm):
             'host_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: linux_sunucu'}),
             'alias': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Linux Sunucular'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Linux Sunucular'}),
-            'hostgroups': forms.ModelMultipleChoiceField(queryset=Host_Groups.objects.all()),
+            'hostgroups': forms.Select(attrs={'class': 'form-control'}),
         }
