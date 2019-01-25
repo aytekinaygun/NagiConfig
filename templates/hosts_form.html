@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block headlink-add %}
+<!-- select2 -->
+<link rel="stylesheet" href="/static/bower_components/select2/dist/css/select2.min.css">
+{% endblock %}
+
 {% block content %}
 <!-- content header -->
 <section class="content-header">
@@ -45,5 +50,15 @@
   </div>
 </section>
 <!-- /.content header -->
+{% endblock %}
 
+{% block footer-add %}
+<!-- Select2 -->
+<script src="/static/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+  })
+</script>
 {% endblock %}
