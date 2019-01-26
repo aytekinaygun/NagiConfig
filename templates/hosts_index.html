@@ -14,7 +14,7 @@
     </h2>
     <br>
     <div class="col-xs-3">
-      <a href="/hosts_create">
+      <a href="/host_create">
       <button type="button" class="btn btn-block btn-success btn-md">Yeni Host Oluştur</button>
       </a>
     </div>
@@ -39,6 +39,8 @@
                 <th>Sıra No</th>
                 <th>Host Adı</th>
                 <th>Host Açıklaması</th>
+                <th>IP Adresi</th>
+                <th>Üyesi Olduğu Grup(lar)</th>
               </tr>
               </thead>
               <tbody>
@@ -46,8 +48,16 @@
               {% for h in hosts %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="/host_groups_update/{{ hg.id }}">{{ h.host_name }}</a></td>
+                <td><a href="/host_update/{{ h.id }}">{{ h.host_name }}</a></td>
                 <td>{{ h.alias }}</td>
+                <td>{{ h.address }}</td>
+                <td>
+                  {% for hg in h.hostgroups.all %}
+                    <small style="font-size:100%; font-weight: 501;" class="label bg-orange"> {{ hg }}</small>
+                  {% empty %}
+                    Hiçbir gruba üye değil!
+                  {% endfor %}
+                <td>
               </tr>
               {% endfor %}
               <!-- /.Host Grubu Tablosu -->

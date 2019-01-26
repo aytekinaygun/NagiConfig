@@ -28,5 +28,6 @@ urlpatterns = [
     path('host_groups_update/<int:id>/', host_groups_update),
     path('host_groups_delete/<int:id>/', host_groups_delete),
     path('hosts_index/', hosts_index),
-    path('hosts_create/', hosts_create),
+    path('host_create/', host_create),
+    path('host_update/<int:id>/', host_update),
     ]

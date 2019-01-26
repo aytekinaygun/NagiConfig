@@ -27,7 +27,6 @@ def host_groups_create(request):
 
 def host_groups_update(request, id):
     hg = get_object_or_404(Host_Groups, id=id)
-    print (hg)
     form = HostGroupsForm(request.POST or None, instance=hg) # formu doldur
     if form.is_valid(): # form doğru şekilde doldu ise kaydet
         form.save()
