@@ -3,12 +3,21 @@ from .models import Hosts
 from host_groups.models import Host_Groups
 
 class HostsForm(forms.ModelForm):
-    parents = forms.ModelMultipleChoiceField(
-    to_field_name='id',
-    widget=forms.SelectMultiple(attrs={'class': 'form-control select2', 'data-placeholder': '  Seçiniz'}),
-    queryset=Hosts.objects.all().order_by('host_name'),
-    label='Bağlı Olduğu Host(lar)',
-    )
+
+    # Parent seçeneklerinde host'un kendisi olmamalı.
+    # Update formundan gelen self.instance.id = hostun id'si. queryset'de bu id hariç tutuldu.
+    # view'den gelen ID'yi görmek için bu fonksiyon gerekli.
+    #
+    # Yeni kayıt olduğunda self.instance.id = None değerini alıyor, dolayısıyla
+    # hiçbir kayıt hariç tutulmadan tüm kayıtlar geliyor. if sorgusuna gerek yok.
+    def __init__(self, *args, **kwargs):
+        super(HostsForm, self).__init__(*args, **kwargs)
+        self.fields['parents'] = forms.ModelMultipleChoiceField(
+            queryset=Hosts.objects.exclude(id=self.instance.id).order_by('host_name'),
+            to_field_name='id',
+            widget=forms.SelectMultiple(attrs={'class': 'form-control select2', 'data-placeholder': '  Seçiniz'}),
+            label='Bağlı Olduğu Host(lar)',
+        )
 
     hostgroups = forms.ModelMultipleChoiceField(
         to_field_name='id',
@@ -16,7 +25,6 @@ class HostsForm(forms.ModelForm):
         queryset=Host_Groups.objects.all().order_by('hostgroup_name'),
         label='Üyesi Olduğu Host Grubu',
     )
-
     class Meta:
         model = Hosts
         fields = [

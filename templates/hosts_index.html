@@ -40,6 +40,7 @@
                 <th>Host Açıklaması</th>
                 <th>IP Adresi</th>
                 <th>Üyesi Olduğu Grup(lar)</th>
+                <th>Bağlı olduğu Host</th>
               </tr>
               </thead>
               <tbody>
@@ -52,9 +53,16 @@
                 <td>{{ h.address }}</td>
                 <td>
                   {% for hg in h.hostgroups.all|dictsort:'hostgroup_name' %}
-                    <small style="font-size:100%; font-weight: 401;" class="label bg-orange"> {{ hg }}</small>
+                    <small style="font-size:100%; font-weight: 401;" class="label bg-gray"> {{ hg }}</small>
                   {% empty %}
                     Hiçbir gruba üye değil!
+                  {% endfor %}
+                </td>
+                <td>
+                  {% for ho in h.parents.all|dictsort:'host_name' %}
+                    <small style="font-size:100%; font-weight: 401;" class="label bg-gray"> {{ ho }}</small>
+                  {% empty %}
+                    Hiçbir host'a bağlı değil!
                   {% endfor %}
                 </td>
               </tr>

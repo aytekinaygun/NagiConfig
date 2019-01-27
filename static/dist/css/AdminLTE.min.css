@@ -37,6 +37,10 @@ form p{
   margin-top: 10px;
 }
 
+.select-blue {
+  color: blue;
+}
+
 /* ###################################### */
 
 .wrapper{
@@ -3762,10 +3766,10 @@ table.text-center,table.text-center td,table.text-center th{
     border-color:#d2d6de
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice{
-    background-color:#ff851b;
-    border-color:#ff851b;
+    background-color:#d2d6de;
+    border-color:#d2d6de;
     padding:1px 10px;
-    color:#fff
+    color:#555
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
     margin-right:5px;

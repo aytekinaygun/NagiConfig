@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+
 # Create your models here.
 class Hosts(models.Model):
     host_name = models.CharField(max_length=50, verbose_name='Host Adı')
@@ -14,7 +15,8 @@ class Hosts(models.Model):
         return self.host_name
 
     # Girilen değerler kısıtlara göre kontrol edilir.
-    def clean(self):
-        print(self.host_name, self)
-        if self.id == 1:
-            raise ValidationError(('..... aynı host olamaz.'), code='invalid')
+    # def clean(self):
+    #     for parent in self.parents.all():
+    #         if self.id == parent.id:
+    #             print(self.id, parent.id)
+    #             raise ValidationError(('..... aynı host olamaz.'), code='invalid')

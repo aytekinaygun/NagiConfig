@@ -27,6 +27,7 @@ def host_create(request):
     return render(request, 'hosts_form.html', context)
 
 def host_update(request, id):
+    update = "yes" # sil butonu olmaması için.
     h = get_object_or_404(Hosts, id=id)
     form = HostsForm(request.POST or None, instance=h) # formu doldur
     if form.is_valid(): # form doğru şekilde doldu ise kaydet
