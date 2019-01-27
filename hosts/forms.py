@@ -3,18 +3,19 @@ from .models import Hosts
 from host_groups.models import Host_Groups
 
 class HostsForm(forms.ModelForm):
+    parents = forms.ModelMultipleChoiceField(
+    to_field_name='id',
+    widget=forms.SelectMultiple(attrs={'class': 'form-control select2', 'data-placeholder': '  Seçiniz'}),
+    queryset=Hosts.objects.all().order_by('host_name'),
+    label='Bağlı Olduğu Host(lar)',
+    )
+
     hostgroups = forms.ModelMultipleChoiceField(
         to_field_name='id',
-        widget=forms.SelectMultiple(attrs={'class': 'form-control select2', 'data-placeholder': '  Grup seçiniz...'}),
-        queryset=Host_Groups.objects.all(),
-        # queryset=Host_Groups.objects.all().values_list('hostgroup_name', flat=True), # flat True olmaz ise grup adı parantezli ve tırnak içinde geliyor.
-        label='Host Grubu',
-        )
-
-    # def __init__(self, *args, **kwargs):
-    #     super(HostsForm, self).__init__(*args, **kwargs)
-    #
-    #     self.fields['hostgroups'].queryset = Host_Groups.objects.all()#.values_list('id','hostgroup_name')
+        widget=forms.SelectMultiple(attrs={'class': 'form-control select2', 'data-placeholder': '  Birden fazla grup seçebilirsiniz...'}),
+        queryset=Host_Groups.objects.all().order_by('hostgroup_name'),
+        label='Üyesi Olduğu Host Grubu',
+    )
 
     class Meta:
         model = Hosts
@@ -22,6 +23,7 @@ class HostsForm(forms.ModelForm):
             'host_name',
             'alias',
             'address',
+            'parents',
             'hostgroups',
         ]
         widgets = {

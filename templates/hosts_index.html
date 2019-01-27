@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="/static/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 {% endblock %}
 
-
 {% block content %}
   <!-- content header -->
   <section class="content-header">
@@ -52,16 +51,16 @@
                 <td>{{ h.alias }}</td>
                 <td>{{ h.address }}</td>
                 <td>
-                  {% for hg in h.hostgroups.all %}
-                    <small style="font-size:100%; font-weight: 501;" class="label bg-orange"> {{ hg }}</small>
+                  {% for hg in h.hostgroups.all|dictsort:'hostgroup_name' %}
+                    <small style="font-size:100%; font-weight: 401;" class="label bg-orange"> {{ hg }}</small>
                   {% empty %}
                     Hiçbir gruba üye değil!
                   {% endfor %}
-                <td>
+                </td>
               </tr>
               {% endfor %}
               <!-- /.Host Grubu Tablosu -->
-              </tfoot>
+            </tbody>
             </table>
           </div>
           <!-- /.box-body -->
@@ -77,15 +76,15 @@
 
 
 {% block footer-add %}
-  <!-- DataTables -->
-  <script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-  <!-- page script -->
-  <script>
-    $(function () {
-      $('#hosts').DataTable({
-      'searching'   : true
-      })
+<!-- DataTables -->
+<script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#hosts').DataTable({
+    'searching'   : true
     })
-  </script>
+  })
+</script>
 {% endblock %}
