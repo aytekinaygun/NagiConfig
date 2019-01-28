@@ -41,6 +41,13 @@ form p{
   color: blue;
 }
 
+/* #id_parents .select2-container--default .select2-selection--multiple .select2-selection__choice { */
+#id_parents li{
+    background-color: red;
+    border-color: red;
+    color: red;
+}
+
 /* ###################################### */
 
 .wrapper{
