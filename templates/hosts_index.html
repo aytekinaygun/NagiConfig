@@ -6,61 +6,71 @@
 {% endblock %}
 
 {% block content %}
-  <!-- content header -->
-  <section class="content-header">
-    <h2>
-      Hostlar
-    </h2>
-    <br>
-    <div class="col-xs-3">
-      <a href="/host_create">
+<!-- content header -->
+<section class="content-header">
+  <h2>
+    Hostlar
+  </h2>
+  <br>
+  <div class="col-xs-3">
+    <a href="/host_create">
       <button type="button" class="btn btn-block btn-success btn-md">Yeni Host Oluştur</button>
-      </a>
-    </div>
-    <br><br>
-  </section>
-  <!-- /.content header -->
+    </a>
+  </div>
+  <br><br>
+</section>
+<!-- /.content header -->
 
-  <!-- Main content -->
-  <section class="content">
-    <div class="row">
-      <div class="col-xs-12">
-        {% include "messages.html" %}
-        <div class="box">
-          <div class="box-header">
-            <h3 class="box-title"></h3>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-            <table id="hosts" class="table table-bordered table-striped">
-              <thead>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      {% include "messages.html" %}
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title"></h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="hosts" class="table table-bordered table-striped">
+            <thead>
               <tr>
                 <th>Sıra No</th>
+                <th>Durumu</th>
                 <th>Host Adı</th>
                 <th>Host Açıklaması</th>
                 <th>IP Adresi</th>
                 <th>Bağlı olduğu Host</th>
                 <th>Üyesi Olduğu Grup(lar)</th>
               </tr>
-              </thead>
-              <tbody>
+            </thead>
+            <tbody>
               <!-- Host Grubu Tablosu -->
               {% for h in hosts %}
               <tr>
                 <td>{{ forloop.counter }}</td>
+                <td style="text-align:center;">
+                  {% if h.is_active == True %}
+                  <i style="color: #1abc9c;" class="fa fa-check-square"></i>
+                  {% endif %}
+                  {% if h.is_active == False %}
+                  <i style="color: #dd4b39" class="fa fa-window-close"></i>
+                  {% endif %}
+
+                </td>
                 <td><a href="/host_update/{{ h.id }}">{{ h.host_name }}</a></td>
                 <td>{{ h.alias }}</td>
                 <td>{{ h.address }}</td>
                 <td>
                   {% for ho in h.parents.all|dictsort:'host_name' %}
-                    <small style="font-size:100%; font-weight: 401;" class="label bg-yellow"> {{ ho }}</small>
+                  <small style="font-size:100%; font-weight: 401;" class="label bg-yellow">{{ ho }}</small>
                   {% empty %}
-                    Hiçbir host'a bağlı değil!
+                  Hiçbir host'a bağlı değil!
                   {% endfor %}
                 </td>
                 <td>
                   {% for hg in h.hostgroups.all|dictsort:'hostgroup_name' %}
-                  <small style="font-size:100%; font-weight: 401;" class="label bg-orange"> {{ hg }}</small>
+                  <small style="font-size:100%; font-weight: 401;" class="label bg-orange">{{ hg }}</small>
                   {% empty %}
                   Hiçbir gruba üye değil!
                   {% endfor %}
@@ -69,17 +79,17 @@
               {% endfor %}
               <!-- /.Host Grubu Tablosu -->
             </tbody>
-            </table>
-          </div>
-          <!-- /.box-body -->
+          </table>
         </div>
-        <!-- /.box -->
+        <!-- /.box-body -->
       </div>
-      <!-- /.col -->
+      <!-- /.box -->
     </div>
-    <!-- /.row -->
-  </section>
-  <!-- /.content -->
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
 {% endblock %}
 
 
@@ -89,10 +99,10 @@
 <script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    $('#hosts').DataTable({
+$(function () {
+  $('#hosts').DataTable({
     'searching'   : true
-    })
   })
+})
 </script>
 {% endblock %}

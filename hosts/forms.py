@@ -33,9 +33,11 @@ class HostsForm(forms.ModelForm):
             'address',
             'parents',
             'hostgroups',
+            'is_active',
         ]
         widgets = {
             'host_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: linux_sunucu'}),
             'alias': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Linux Sunucular'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: 192.168.0.1'}),
+            'is_active': forms.CheckboxInput(attrs={'class': 'form-control flat-red'}),
         }

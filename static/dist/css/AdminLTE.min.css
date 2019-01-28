@@ -48,6 +48,16 @@ form p{
     color: red;
 }
 
+.bg-orange {
+    margin: 1px;
+    display: inline-block;
+}
+
+.bg-yellow {
+    background-color: #ff851b !important;
+    margin: 1px;
+    display: inline-block;
+}
 /* ###################################### */
 
 .wrapper{

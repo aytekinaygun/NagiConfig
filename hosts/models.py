@@ -9,6 +9,7 @@ class Hosts(models.Model):
     address = models.GenericIPAddressField(verbose_name='IP Adresi')
     parents = models.ManyToManyField('Hosts')
     hostgroups = models.ManyToManyField('host_groups.Host_Groups')
+    is_active = models.BooleanField(default=False, verbose_name=' Aktif edilsin mi?') 
 
     # Admin panelde listede grup adı görünür.
     def __str__(self):

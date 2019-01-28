@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block headlink-add %}
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="/static/plugins/iCheck/all.css">
 {% endblock %}
 
 {% block content %}
@@ -53,10 +55,19 @@
 {% block footer-add %}
 <!-- Select2 -->
 <script src="/static/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="/static/plugins/iCheck/icheck.min.js"></script>
+
 <script>
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
+  })
+
+  //Flat red color scheme for iCheck
+  $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+    checkboxClass: 'icheckbox_flat-green',
+    radioClass   : 'iradio_flat-green'
   })
 </script>
 {% endblock %}
