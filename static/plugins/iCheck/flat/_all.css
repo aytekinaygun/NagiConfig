@@ -117,13 +117,14 @@
     display: inline-block;
     *display: inline;
     vertical-align: middle;
-    margin: 0;
+    margin: 0px 10px 0px 0px;
     padding: 0;
     width: 20px;
     height: 20px;
     background: url(green.png) no-repeat;
     border: none;
     cursor: pointer;
+    float: left;
 }
 
 .icheckbox_flat-green {
