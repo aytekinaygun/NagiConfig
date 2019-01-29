@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home',
     'host_groups',
     'hosts',
+    'services',
 ]
 
 MIDDLEWARE = [

@@ -57,7 +57,7 @@ python manage.py createsuperuser
 python manage.py startapp host_groups
 python manage.py startapp hosts
 python manage.py startapp services
-# app'i settings'e ekle
+  - app'i settings'e ekle
 
 # MODEL
 # model oluştur. Sonra veritabanına işle.
