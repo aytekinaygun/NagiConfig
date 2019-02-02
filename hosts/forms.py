@@ -28,16 +28,16 @@ class HostsForm(forms.ModelForm):
     class Meta:
         model = Hosts
         fields = [
+            'is_active',
             'host_name',
             'alias',
             'address',
             'parents',
             'hostgroups',
-            'is_active',
         ]
         widgets = {
+            'is_active': forms.CheckboxInput(attrs={'class': 'onoffswitch-checkbox', 'id': 'myonoffswitch'}),
             'host_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: linux_sunucu'}),
             'alias': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Linux Sunucular'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: 192.168.0.1'}),
-            'is_active': forms.CheckboxInput(attrs={'class': 'form-control flat-red'}),
         }

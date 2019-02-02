@@ -52,6 +52,61 @@ form p{
     margin: 1px;
     display: inline-block;
 }
+
+.btn-default {
+  background-color: #f4f4f4;
+  color: #444;
+  border-color: #ddd;
+}
+
+/* ON/OFF SWITCH */
+.onoffswitch {
+    position: relative; width: 70px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 50px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 20px; padding: 0; line-height: 20px;
+    font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 7px;
+    background-color: #5FBF5F; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 7px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 25px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 46px;
+    border: 2px solid #999999; border-radius: 50px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+/* END ON/OFF SWITCH */
+
 /* ###################################### */
 
 .wrapper{
@@ -1948,7 +2003,7 @@ a:hover,a:active,a:focus{
     border-radius:3px;
     -webkit-box-shadow:none;
     box-shadow:none;
-    border:1px solid transparent
+    /* border:1px solid transparent */
 }
 .btn.uppercase{
     text-transform:uppercase
@@ -3777,17 +3832,18 @@ table.text-center,table.text-center td,table.text-center th{
     border-color:#d2d6de
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice{
-    background-color:#d2d6de;
+    background-color:#f0f0f0;
     border-color:#d2d6de;
     padding:1px 10px;
     color:#555
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
     margin-right:5px;
-    color:rgba(255,255,255,0.7)
+    color:#555;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover{
-    color:#fff
+    color:#000;
+    
 }
 .select2-container .select2-selection--single .select2-selection__rendered{
     padding-right:10px
