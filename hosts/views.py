@@ -41,3 +41,9 @@ def host_update(request, id):
         'id'     : id,
         }
     return render(request, 'hosts_form.html', context)
+
+def host_delete(request, id):
+    h = get_object_or_404(Hosts, id=id)
+    h.delete()
+    messages.success(request, 'Silme başarılı.', extra_tags='alert-success')
+    return redirect('/hosts_index/')

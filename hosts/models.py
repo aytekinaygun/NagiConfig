@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Hosts(models.Model):
-    host_name = models.CharField(max_length=50, verbose_name='Host Adı', help_text="deneme")
+    host_name = models.CharField(max_length=50, verbose_name='Host Adı', help_text="deneme", unique=True) # unique=benzersiz
     alias = models.CharField(max_length=150, verbose_name='Host Açıklaması')
     address = models.GenericIPAddressField(verbose_name='IP Adresi')
     parents = models.ManyToManyField('Hosts')

@@ -19,7 +19,7 @@
       <div class="box box-primary">
         <div class="box-header with-border">
           <!-- <h1 class="box-title">Quick Example</h1> -->
-          <p>Türkçe karakter kullanmayınız. Grup adlarında boşluk bırakmayınız.</p>
+          <p>Türkçe karakter kullanmayınız.</p>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -27,49 +27,36 @@
 
           <form role="form" method="post">
             <div class="col-md-2"></div>
+
             <div class="col-md-8">
               {% csrf_token %}
 
               {% for field in form %}
               <br>
               <div class="form-group">
-                <!-- <span class="border"></span> -->
 
                 {{ field.errors }}
                 {{ field.label_tag }}
-
-                {% if field.name == "is_active" %}
-                <div class="onoffswitch">
-                  {{ field }}
-                  <label class="onoffswitch-label" for="myonoffswitch">
-                    <span class="onoffswitch-inner"></span>
-                    <span class="onoffswitch-switch"></span>
-                  </label>
-                </div>
-                {% else %}
                 {{ field }}
-                {% endif %}
-
                 {% if field.help_text %}
-                <small>{{ field.help_text|safe }}</small>
+                  <small>{{ field.help_text|safe }}</small>
                 {% endif %}
 
               </div>
               {% endfor %}
-
-
             </div>
 
             <div class="col-md-2"></div>
+
             <div class="submit-row col-md-12">
               <!-- Sadece guncelleme sayfasında sil butonu görünür.  -->
               {% if update  == "yes" %}
-              <a class="pull-left" href="/host_delete/{{ id }}">
+              <a class="pull-left" href="/service_template_delete/{{ id }}">
                 <button type="button" class="btn btn-block btn-danger">Sil</button>
               </a>
               {% endif %}
               <input style="margin-left: 20px;" class="btn btn-primary pull-right" type="submit" value="Kaydet">
-              <a class="pull-right" href="/hosts_index">
+              <a class="pull-right" href="/services_template_index">
                 <button type="button" class="btn btn-block btn-default">Çık</button>
               </a>
             </div>
@@ -84,13 +71,4 @@
 {% endblock %}
 
 {% block footer-add %}
-<!-- Select2 -->
-<script src="/static/bower_components/select2/dist/js/select2.full.min.js"></script>
-
-<script>
-$(function () {
-  //Initialize Select2 Elements
-  $('.select2').select2()
-})
-</script>
 {% endblock %}

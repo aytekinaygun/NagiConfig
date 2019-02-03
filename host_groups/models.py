@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Host_Groups(models.Model):
-    hostgroup_name = models.CharField(max_length=50, verbose_name='Host Grubu Adı')
+    hostgroup_name = models.CharField(max_length=50, verbose_name='Host Grubu Adı', unique=True)
     alias = models.CharField(max_length=150, verbose_name='Host Grubu Açıklaması')
 
     # Admin panelde listede grup adı görünür.

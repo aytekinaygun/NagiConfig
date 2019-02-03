@@ -25,7 +25,7 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 {% csrf_token %}
-
+{% include "messages.html" %}
                 {% for field in form %}
                 <br>
                 <div class="form-group">

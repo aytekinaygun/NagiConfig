@@ -24,7 +24,7 @@ class HostsForm(forms.ModelForm):
         widget=forms.SelectMultiple(attrs={'class': 'form-control select2', 'data-placeholder': '  Birden fazla grup seçebilirsiniz...'}),
         queryset=Host_Groups.objects.all().order_by('hostgroup_name'),
         label='Üyesi Olduğu Host Grubu',
-    )
+        )
     class Meta:
         model = Hosts
         fields = [
