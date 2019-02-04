@@ -26,14 +26,14 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ count_hosts }}</h3>
 
-                <p>New Orders</p>
+                <p>Toplam Host Sayısı</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="/hosts_index/" class="small-box-footer">Ayrıntılı Bilgi <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -42,14 +42,14 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ count_host_groups }}</h3>
 
-                <p>New Orders</p>
+                <p>Toplam Host Grubu Sayısı</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="/host_groups_index/" class="small-box-footer">Ayrıntılı Bilgi <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -58,17 +58,26 @@
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ count_services }}</h3>
 
-                <p>New Orders</p>
+                <p>Toplam Servis Sayısı</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="/services_index/" class="small-box-footer">Ayrıntılı Bilgi <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
+
+<div class="col-md-12">
+  {% for i in group_by_host_groups %}
+  {% for x in i.hosts.all %}
+  {{ x }} <br>
+  {% endfor %}
+{% endfor %}
+
+</div>
 
 
         </div>
