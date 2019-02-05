@@ -10,20 +10,23 @@ def home_index(request):
     count_host_groups    = Host_Groups.objects.count()
     count_services       = Services.objects.count()
     group_by_host_groups = Hosts.objects.values('hostgroups').annotate(total=Count('hostgroups')).order_by('hostgroups')
-    hostgroups           = Host_Groups.objects.all()
+    # Yukarıdaki sorgudan gelen veri:
+    # [{'hostgroups':1, total:5}, {'hostgroups':2, total:7}]
+    # 1 ve 2 hostgroups'un id'si
 
-    # Sözlükde hostgroup id bilgisi hostgroup_name ile değiştirilir.
+    myChartHostGroups_labels = []
+    myChartHostGroups_data   = []
     for hg in group_by_host_groups:
         id = hg['hostgroups']
         hg_name = Host_Groups.objects.get(id=id)
-        hg['hostgroups'] = hg_name.hostgroup_name
+        myChartHostGroups_labels.append(hg_name)
+        myChartHostGroups_data.append(hg['total'])
 
     context = {
-        'count_hosts'          : count_hosts,
-        'count_host_groups'    : count_host_groups,
-        'count_services'       : count_services,
-        'group_by_host_groups' : group_by_host_groups,
-        'hostgroups'           : hostgroups,
-        'xxx'                  : ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        'count_hosts'              : count_hosts,
+        'count_host_groups'        : count_host_groups,
+        'count_services'           : count_services,
+        'myChartHostGroups_labels' : myChartHostGroups_labels,
+        'myChartHostGroups_data'   : myChartHostGroups_data,
         }
     return render(request, 'home.html', context)
