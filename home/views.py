@@ -24,5 +24,6 @@ def home_index(request):
         'count_services'       : count_services,
         'group_by_host_groups' : group_by_host_groups,
         'hostgroups'           : hostgroups,
+        'xxx'                  : ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         }
     return render(request, 'home.html', context)
