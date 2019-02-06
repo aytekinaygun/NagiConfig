@@ -29,3 +29,6 @@ class ServiceCommand(models.Model):
 class Services(models.Model):
     service_description = models.ForeignKey('ServiceCommand', on_delete=models.CASCADE, unique=True)
     hosts = models.ManyToManyField('hosts.Hosts')
+
+    def __str__(self):
+        return self.service_description

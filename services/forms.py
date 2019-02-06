@@ -24,7 +24,7 @@ class ServiceForm(forms.ModelForm):
     to_field_name='id',
     widget=forms.Select(attrs={'class': 'form-control  select2', 'data-placeholder': '  Servis komutu seçiniz...'}),
     queryset=ServiceCommand.objects.all().order_by('command_description'),
-    label='Servis Komutu',
+    label='Servis Açıklaması',
     )
 
     hosts = forms.ModelMultipleChoiceField(

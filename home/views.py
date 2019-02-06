@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from hosts.models import Hosts
 from host_groups.models import Host_Groups
-from services.models import Services
+from services.models import Services, ServiceCommand
 from django.db.models import Count # group_by_host_groups
 
 
 def home_index(request):
     # Toplam sayılar
+    ########################################################
     count_hosts          = Hosts.objects.count()
     count_host_groups    = Host_Groups.objects.count()
     count_services       = Services.objects.count()
@@ -16,7 +17,6 @@ def home_index(request):
     # Yukarıdaki sorgudan gelen veri:
     # [{'hostgroups':1, total:5}, {'hostgroups':2, total:7}]
     # 1 ve 2 hostgroups'un id'si
-
     myChartHostGroups_labels = []
     myChartHostGroups_data   = []
     for hg in group_by_host_groups:
@@ -26,8 +26,15 @@ def home_index(request):
         myChartHostGroups_data.append(hg['total'])
 
     # Servislerin host sayısı
-    # group_by_services = Services.objects.values('template').annotate(total=Count('template')).order_by('template')
-    # print(group_by_services)
+    ######################################################
+    group_by_services = Services.objects.values('service_description').annotate(total=Count('hosts')) #.order_by('service_description')
+    myChartServices_labels = []
+    myChartServices_data   = []
+    for srv in group_by_services:
+        id = srv['service_description']
+        sd = ServiceCommand.objects.get(id=id)
+        myChartServices_labels.append(sd.command_description)
+        myChartServices_data.append(srv['total'])
 
     context = {
         'count_hosts'              : count_hosts,
@@ -35,5 +42,7 @@ def home_index(request):
         'count_services'           : count_services,
         'myChartHostGroups_labels' : myChartHostGroups_labels,
         'myChartHostGroups_data'   : myChartHostGroups_data,
+        'myChartServices_labels'   : myChartServices_labels,
+        'myChartServices_data'     : myChartServices_data,
         }
     return render(request, 'home.html', context)

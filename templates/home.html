@@ -102,11 +102,11 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Gruplara Göre Dağılım</h3>
+          <h3 class="box-title">Servislere Göre Dağılım</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <canvas id="myChartServices" width="400" height="400"></canvas>
+          <canvas id="myChartServices"</canvas>
         </div>
         <!-- /.box-body -->
       </div>
@@ -163,6 +163,40 @@ var myChartHostGroups = new Chart(ctx, {
 </script>
 <!-- /. myChartHostGroups -->
 
-
+<!-- myChartServices -->
+<script>
+var myChartServices_labels =  [{% for item in myChartServices_labels %}
+                                "{{item}}",
+                                {% endfor %}];
+var ctx = document.getElementById("myChartServices");
+var myChartServices = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: myChartServices_labels,
+        datasets: [{
+            label: 'Host sayısı',
+            data: {{myChartServices_data}},
+            backgroundColor: 'rgb(0, 192, 239, 0.2)',
+            borderColor: 'rgb(0, 192, 239, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                minRotation: 75
+              }
+            }]
+        }
+    }
+});
+</script>
+<!-- /. myChartServices -->
 
 {% endblock %}
