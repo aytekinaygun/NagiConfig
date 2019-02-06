@@ -5,9 +5,10 @@
 <!-- content header -->
 <section class="content-header">
   <h2>
+    <i class="fa fa-dashboard"></i>
     Dashboard
   </h2>
-  <br>
+
 </section>
 <!-- /.content header -->
 
@@ -27,7 +28,6 @@
             <div class="small-box bg-yellow">
               <div class="inner">
                 <h3>{{ count_hosts }}</h3>
-
                 <p>Toplam Host Sayısı</p>
               </div>
               <div class="icon">
@@ -43,7 +43,6 @@
             <div class="small-box bg-aqua">
               <div class="inner">
                 <h3>{{ count_host_groups }}</h3>
-
                 <p>Toplam Host Grubu Sayısı</p>
               </div>
               <div class="icon">
@@ -83,11 +82,11 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Gruplara Göre Dağılım</h3>
+          <h3 class="box-title">Gruplardaki Host Sayıları</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <canvas id="myChartHostGroups"></canvas>
+          <canvas id="myChartHostGroups" height="100"></canvas>
         </div>
         <!-- /.box-body -->
       </div>
@@ -102,11 +101,11 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Servislere Göre Dağılım</h3>
+          <h3 class="box-title">Servislerdeki Host Sayıları</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <canvas id="myChartServices"</canvas>
+          <canvas id="myChartServices" height="100"></canvas>
         </div>
         <!-- /.box-body -->
       </div>
@@ -130,72 +129,72 @@
 <!-- myChartHostGroups -->
 <script>
 var myChartHostGroups_labels =  [{% for item in myChartHostGroups_labels %}
-                                "{{item}}",
-                                {% endfor %}];
-var ctx = document.getElementById("myChartHostGroups");
-var myChartHostGroups = new Chart(ctx, {
+  "{{item}}",
+  {% endfor %}];
+  var ctx = document.getElementById("myChartHostGroups");
+  var myChartHostGroups = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: myChartHostGroups_labels,
-        datasets: [{
-            label: 'Host sayısı',
-            data: {{myChartHostGroups_data}},
-            backgroundColor: 'rgb(0, 192, 239, 0.2)',
-            borderColor: 'rgb(0, 192, 239, 1)',
-            borderWidth: 1
-        }]
+      labels: myChartHostGroups_labels,
+      datasets: [{
+        label: 'Host sayısı',
+        data: {{myChartHostGroups_data}},
+        backgroundColor: 'rgb(0, 192, 239, 0.2)',
+        borderColor: 'rgb(0, 192, 239, 1)',
+        borderWidth: 1
+      }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }],
-            xAxes: [{
-              ticks: {
-                minRotation: 75
-              }
-            }]
-        }
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            minRotation: 75
+          }
+        }]
+      }
     }
-});
+  });
 </script>
 <!-- /. myChartHostGroups -->
 
 <!-- myChartServices -->
 <script>
 var myChartServices_labels =  [{% for item in myChartServices_labels %}
-                                "{{item}}",
-                                {% endfor %}];
-var ctx = document.getElementById("myChartServices");
-var myChartServices = new Chart(ctx, {
+  "{{item}}",
+  {% endfor %}];
+  var ctx = document.getElementById("myChartServices");
+  var myChartServices = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: myChartServices_labels,
-        datasets: [{
-            label: 'Host sayısı',
-            data: {{myChartServices_data}},
-            backgroundColor: 'rgb(0, 192, 239, 0.2)',
-            borderColor: 'rgb(0, 192, 239, 1)',
-            borderWidth: 1
-        }]
+      labels: myChartServices_labels,
+      datasets: [{
+        label: 'Host sayısı',
+        data: {{myChartServices_data}},
+        backgroundColor: 'rgb(221, 75, 57, 0.2)',
+        borderColor: 'rgb(221, 75, 57, 1)',
+        borderWidth: 1
+      }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }],
-            xAxes: [{
-              ticks: {
-                minRotation: 75
-              }
-            }]
-        }
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            minRotation: 75
+          }
+        }]
+      }
     }
-});
+  });
 </script>
 <!-- /. myChartServices -->
 

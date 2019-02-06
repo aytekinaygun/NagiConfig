@@ -1588,7 +1588,8 @@ a:hover,a:active,a:focus{
     display:inline-block;
     font-size:18px;
     margin:0;
-    line-height:1
+    line-height:1;
+    padding-left: 20px;
 }
 .box-header>.fa,.box-header>.glyphicon,.box-header>.ion{
     margin-right:5px
@@ -3843,7 +3844,7 @@ table.text-center,table.text-center td,table.text-center th{
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover{
     color:#000;
-    
+
 }
 .select2-container .select2-selection--single .select2-selection__rendered{
     padding-right:10px
