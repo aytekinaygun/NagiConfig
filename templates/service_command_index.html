@@ -13,8 +13,8 @@
   </h2>
   <br>
   <div class="col-xs-3">
-    <a href="/service_template_create">
-      <button type="button" class="btn btn-block btn-success btn-md">Yeni Servis Şablonu Oluştur</button>
+    <a href="/service_command_create">
+      <button type="button" class="btn btn-block btn-success btn-md">Yeni Servis Komutu Oluştur</button>
     </a>
   </div>
   <br><br>
@@ -32,19 +32,19 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="templates" class="table table-bordered table-striped">
+          <table id="commands" class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>Sıra No</th>
-                <th>Servis Şablonu</th>
+                <th>Servis Komutu Adı</th>
               </tr>
             </thead>
             <tbody>
               <!-- Host Grubu Tablosu -->
-              {% for st in services_template %}
+              {% for st in service_command %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="/service_template_update/{{ st.id }}">{{ st.service_description }}</a></td>
+                <td><a href="/service_command_update/{{ st.id }}">{{ st.command_description }}</a></td>
               </tr>
               {% endfor %}
               <!-- /.Host Grubu Tablosu -->
@@ -70,7 +70,7 @@
 <!-- page script -->
 <script>
 $(function () {
-  $('#templates').DataTable({
+  $('#commands').DataTable({
     'searching'   : true
   })
 })

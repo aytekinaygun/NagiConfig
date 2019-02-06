@@ -1,52 +1,52 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from services.models import ServiceTemplate, Services
-from .forms import ServiceTemplateForm, ServiceForm
+from services.models import ServiceCommand, Services
+from .forms import ServiceCommandForm, ServiceForm
 from hosts.models import Hosts
 
 # Servis Şablonu
-def services_template_index(request):
-        services_template = ServiceTemplate.objects.all()
+def service_command_index(request):
+        service_command = ServiceCommand.objects.all()
         context = {
-            'services_template'     : services_template,
-            'title'                 : 'Servis Şablonları',
+            'service_command' : service_command,
+            'title'           : 'Servis Komutları',
             }
-        return render(request, 'services_template_index.html', context)
+        return render(request, 'service_command_index.html', context)
 
-def service_template_create(request):
-    form = ServiceTemplateForm(request.POST or None)
+def service_command_create(request):
+    form = ServiceCommandForm(request.POST or None)
     if form.is_valid():
-        h = form.save()
+        sc = form.save()
         messages.success(request, 'Yeni kayıt başarılı.', extra_tags='alert-success')
-        return redirect('/services_template_index/') # kayıtdan sonra buraya dön
+        return redirect('/service_command_index/') # kayıtdan sonra buraya dön
     context = {
         'form' : form,
-        'title': 'Yeni Servis Şablonu Oluştur',
+        'title': 'Yeni Servis Komutu Oluştur',
         }
-    return render(request, 'service_template_form.html', context)
+    return render(request, 'service_command_form.html', context)
 
-def service_template_update(request, id):
+def service_command_update(request, id):
     update = "yes" # sil butonu olmaması için.
-    template = get_object_or_404(ServiceTemplate, id=id)
-    form = ServiceTemplateForm(request.POST or None, instance=template) # formu doldur
+    cmd_name = get_object_or_404(ServiceCommand, id=id)
+    form = ServiceCommandForm(request.POST or None, instance=cmd_name) # formu doldur
     if form.is_valid():
         form.save()
         messages.success(request, 'Güncelleme başarılı.', extra_tags='alert-success')
-        return redirect('/services_template_index/') # kayıtdan sonra buraya dön
+        return redirect('/service_command_index/') # kayıtdan sonra buraya dön
     context = {
         'form'   : form,
         'title'  : 'Servis Şablonunu Güncelle',
         'update' : 'yes',
         'id'     : id,
         }
-    return render(request, 'service_template_form.html', context)
+    return render(request, 'service_command_form.html', context)
 
-def service_template_delete(request, id):
-    template = get_object_or_404(ServiceTemplate, id=id)
-    template.delete()
+def service_command_delete(request, id):
+    cmd_name = get_object_or_404(ServiceCommand, id=id)
+    cmd_name.delete()
     messages.success(request, 'Silme başarılı.', extra_tags='alert-success')
-    return redirect('/services_template_index/')
+    return redirect('/service_command_index/')
 
 
 # Servis

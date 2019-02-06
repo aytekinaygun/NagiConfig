@@ -51,12 +51,12 @@
             <div class="submit-row col-md-12">
               <!-- Sadece guncelleme sayfasında sil butonu görünür.  -->
               {% if update  == "yes" %}
-              <a class="pull-left" href="/service_template_delete/{{ id }}">
+              <a class="pull-left" href="/service_command_delete/{{ id }}">
                 <button type="button" class="btn btn-block btn-danger">Sil</button>
               </a>
               {% endif %}
               <input style="margin-left: 20px;" class="btn btn-primary pull-right" type="submit" value="Kaydet">
-              <a class="pull-right" href="/services_template_index">
+              <a class="pull-right" href="/service_command_index">
                 <button type="button" class="btn btn-block btn-default">Çık</button>
               </a>
             </div>

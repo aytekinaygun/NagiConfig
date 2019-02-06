@@ -19,7 +19,7 @@ from django.urls import path
 from home.views import *
 from host_groups.views import *
 from hosts.views import *
-from services.views import *
+from services.views import * #ServiceCommand, Services
 
 
 urlpatterns = [
@@ -33,10 +33,10 @@ urlpatterns = [
     path('host_create/', host_create),
     path('host_update/<int:id>/', host_update),
     path('host_delete/<int:id>/', host_delete),
-    path('services_template_index/', services_template_index),
-    path('service_template_create/', service_template_create),
-    path('service_template_update/<int:id>/', service_template_update),
-    path('service_template_delete/<int:id>/', service_template_delete),
+    path('service_command_index/', service_command_index),
+    path('service_command_create/', service_command_create),
+    path('service_command_update/<int:id>/', service_command_update),
+    path('service_command_delete/<int:id>/', service_command_delete),
     path('services_index/', services_index),
     path('service_create/', service_create),
     path('service_update/<int:id>/', service_update),

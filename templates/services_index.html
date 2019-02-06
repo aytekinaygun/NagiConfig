@@ -32,11 +32,11 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="templates" class="table table-bordered table-striped">
+          <table id="commands" class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>Sıra No</th>
-                <th>Servis Şablonu Adı</th>
+                <th>Servis Komutu Açıklaması</th>
                 <th>Hostlar</th>
               </tr>
             </thead>
@@ -45,7 +45,7 @@
               {% for s in services %}
               <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="/service_update/{{ s.id }}">{{ s.template }}</a></td>
+                <td><a href="/service_update/{{ s.id }}">{{ s.service_description }}</a></td>
                 <td>
                   {% for h in s.hosts.all|dictsort:'host_name' %}
                   <small style="font-size:100%; font-weight: 401;" class="label bg-orange">{{ h }}</small>
@@ -78,7 +78,7 @@
 <!-- page script -->
 <script>
 $(function () {
-  $('#templates').DataTable({
+  $('#commands').DataTable({
     'searching'   : true
   })
 })
