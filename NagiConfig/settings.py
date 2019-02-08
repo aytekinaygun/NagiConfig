@@ -25,7 +25,7 @@ SECRET_KEY = '&mlf@a858c+28l761j2ve$#=5y$7nlcxu)-jo7b*11*w((ceap'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.166']
 
 
 # Application definition
