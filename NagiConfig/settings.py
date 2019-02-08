@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'host_groups',
     'hosts',
     'services',
+    'accounts',
 ]
 
 MIDDLEWARE = [

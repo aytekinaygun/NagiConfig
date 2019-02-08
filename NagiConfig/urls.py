@@ -19,12 +19,14 @@ from django.urls import path
 from home.views import *
 from host_groups.views import *
 from hosts.views import *
-from services.views import * #ServiceCommand, Services
-
+from services.views import *
+from accounts.views import *
 
 urlpatterns = [
-    path('', home_index),
     path('admin/', admin.site.urls),
+    path('login/', login_view),
+    path('', home_index),
+    path('home/', home_index),
     path('host_groups_index/', host_groups_index),
     path('host_groups_create/', host_groups_create),
     path('host_groups_update/<int:id>/', host_groups_update),
