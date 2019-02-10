@@ -5,7 +5,7 @@ from services.models import Services, ServiceCommand
 from django.db.models import Count # group_by_host_groups
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='/login/')
+@login_required()
 def home_index(request):
     # Toplam sayılar
     ########################################################

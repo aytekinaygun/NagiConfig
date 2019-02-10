@@ -1,11 +1,12 @@
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from services.models import ServiceCommand, Services
 from .forms import ServiceCommandForm, ServiceForm
 from hosts.models import Hosts
 
 # Servis Şablonu
+@login_required()
 def service_command_index(request):
         service_command = ServiceCommand.objects.all()
         context = {
@@ -14,6 +15,7 @@ def service_command_index(request):
             }
         return render(request, 'service_command_index.html', context)
 
+@login_required()
 def service_command_create(request):
     form = ServiceCommandForm(request.POST or None)
     if form.is_valid():
@@ -26,6 +28,7 @@ def service_command_create(request):
         }
     return render(request, 'service_command_form.html', context)
 
+@login_required()
 def service_command_update(request, id):
     update = "yes" # sil butonu olmaması için.
     cmd_name = get_object_or_404(ServiceCommand, id=id)
@@ -42,6 +45,7 @@ def service_command_update(request, id):
         }
     return render(request, 'service_command_form.html', context)
 
+@login_required()
 def service_command_delete(request, id):
     cmd_name = get_object_or_404(ServiceCommand, id=id)
     cmd_name.delete()
@@ -51,6 +55,7 @@ def service_command_delete(request, id):
 
 # Servis
 ##############################################
+@login_required()
 def services_index(request):
         services = Services.objects.all()
         hosts = Hosts.objects.all()
@@ -61,6 +66,7 @@ def services_index(request):
             }
         return render(request, 'services_index.html', context)
 
+@login_required()
 def service_create(request):
     form = ServiceForm(request.POST or None)
     if form.is_valid():
@@ -73,6 +79,7 @@ def service_create(request):
         }
     return render(request, 'service_form.html', context)
 
+@login_required()
 def service_update(request, id):
     update = "yes" # sil butonu olmaması için.
     s = get_object_or_404(Services, id=id)
@@ -89,6 +96,7 @@ def service_update(request, id):
         }
     return render(request, 'service_form.html', context)
 
+@login_required()
 def service_delete(request, id):
     s = get_object_or_404(Services, id=id)
     s.delete()

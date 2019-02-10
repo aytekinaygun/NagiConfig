@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from hosts.models import Hosts
 from .forms import HostsForm
 from host_groups.models import Host_Groups
 
+@login_required()
 def hosts_index(request):
     hosts = Hosts.objects.all()
     hostgroups = Host_Groups.objects.all()
@@ -14,6 +16,7 @@ def hosts_index(request):
         }
     return render(request, 'hosts_index.html', context)
 
+@login_required()
 def host_create(request):
     form = HostsForm(request.POST or None)
     if form.is_valid(): # form doğru şekilde doldu ise kaydet
@@ -26,6 +29,7 @@ def host_create(request):
         }
     return render(request, 'hosts_form.html', context)
 
+@login_required()
 def host_update(request, id):
     update = "yes" # sil butonu olmaması için.
     h = get_object_or_404(Hosts, id=id)
@@ -42,6 +46,7 @@ def host_update(request, id):
         }
     return render(request, 'hosts_form.html', context)
 
+@login_required()
 def host_delete(request, id):
     h = get_object_or_404(Hosts, id=id)
     h.delete()
