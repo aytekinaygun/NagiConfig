@@ -12,6 +12,7 @@
 
 body{
   background-image: url('/static/dist/img/login.jpg');
+	background-position: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: white;
 	font-weight: 300;
