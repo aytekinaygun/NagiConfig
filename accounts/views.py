@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm
 
 def login_view(request):
+    if request.user.is_authenticated: # Kullanıcı giriş yapmış ise
+        return redirect('/home/')
+
     form = LoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get('username')

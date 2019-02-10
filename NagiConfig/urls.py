@@ -25,7 +25,8 @@ from accounts.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login_view),
-    path('', home_index),
+    path('logout/', logout_view),
+    path('', login_view),
     path('home/', home_index),
     path('host_groups_index/', host_groups_index),
     path('host_groups_create/', host_groups_create),
