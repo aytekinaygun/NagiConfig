@@ -16,6 +16,11 @@ body{
 /* ###################################### */
 /* NagiConfig */
 /* ###################################### */
+.alert .errorlist {
+  color: #fff;
+}
+
+
 .errorlist {
   color: red;
 }

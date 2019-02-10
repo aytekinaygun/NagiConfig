@@ -11,6 +11,6 @@ class Host_Groups(models.Model):
         return self.hostgroup_name
 
     # Girilen değerler kısıtlara göre kontrol edilir.
-    def clean(self):
-        if self.hostgroup_name == 'a':
-            raise ValidationError(('..... Hatası oldu'), code='invalid')
+    # def clean(self):
+    #     if self.hostgroup_name == 'a':
+    #         raise ValidationError(('..... Hatası oldu'), code='invalid')
