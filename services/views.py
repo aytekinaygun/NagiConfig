@@ -39,7 +39,7 @@ def service_command_update(request, id):
         return redirect('/service_command_index/') # kayıtdan sonra buraya dön
     context = {
         'form'   : form,
-        'title'  : 'Servis Şablonunu Güncelle',
+        'title'  : 'Servis Komutu Güncelle',
         'update' : 'yes',
         'id'     : id,
         }

@@ -17,7 +17,7 @@ from django.core.exceptions import ValidationError
 class ServiceCommand(models.Model):
     command_description = models.CharField(
         max_length=150, verbose_name='Servis Komut Açıklaması',
-        help_text='Türkçe karakter kullanmayınız. Harf, sayı, boşluk, tire (-) ve iki nokta üstüste (:) içerebilir.',
+        help_text='Türkçe karakter kullanmayınız. Sadece harf, sayı, boşluk, tire (-) içerebilir.',
         unique=True
         )
     check_command = models.CharField(max_length=150, verbose_name='Servis Komutu')
@@ -27,7 +27,7 @@ class ServiceCommand(models.Model):
 
 
 class Services(models.Model):
-    service_description = models.ForeignKey('ServiceCommand', on_delete=models.CASCADE)
+    service_description = models.ForeignKey('ServiceCommand', on_delete=models.CASCADE, unique=True)
     hosts = models.ManyToManyField('hosts.Hosts')
 
     def __str__(self):

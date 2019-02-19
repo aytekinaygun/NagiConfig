@@ -1,6 +1,7 @@
 from django import forms
 from .models import Hosts
 from host_groups.models import Host_Groups
+from django.core.exceptions import ValidationError
 
 class HostsForm(forms.ModelForm):
 
@@ -41,3 +42,31 @@ class HostsForm(forms.ModelForm):
             'alias': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: Linux Sunucular'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Örn: 192.168.0.1'}),
         }
+
+    # Girilen değerler kısıtlara göre kontrol edilir.
+    def clean(self):
+        h_error = 0
+        host_name = self.cleaned_data.get('host_name')
+        print(host_name)
+        # ascii karakterler dışında hata (türkçe karakteler ascii kod 128'den büyük)
+        for i in host_name:
+            if ord(i) >= 128:
+                h_error = 1
+        # Tire, harf ve sayı dışında hata
+        if not host_name.replace('-', '').isalnum():
+            h_error = 1
+        if h_error == 1:
+            raise ValidationError(('Host adı kurallara uygun değil!'), code='invalid')
+
+        alias_error = 0
+        alias = self.cleaned_data.get('alias')
+        for i in alias:
+            if ord(i) >= 128:
+                alias_error = 1
+        # Tire, boşluk, harf ve sayı dışında hata
+        if not alias.replace('-', '').replace(' ', '').isalnum():
+            alias_error = 1
+        if alias_error == 1:
+            raise ValidationError(('Host açıklaması kurallara uygun değil!'), code='invalid')
+
+        return super(HostsForm, self).clean()

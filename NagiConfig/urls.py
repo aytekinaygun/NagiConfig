@@ -21,6 +21,7 @@ from host_groups.views import *
 from hosts.views import *
 from services.views import *
 from accounts.views import *
+from system.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,4 +45,6 @@ urlpatterns = [
     path('service_create/', service_create),
     path('service_update/<int:id>/', service_update),
     path('service_delete/<int:id>/', service_delete),
+    path('system/', system),
+    path('nagios_restart', nagios_restart),
     ]
