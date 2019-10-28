@@ -1,22 +1,18 @@
-### VIRTUALENV KURULUM
+### VIRTUALENV KURULUM (Debian 10)
 # En yeni sürümü yükle
-apt-get install python3.x
+apt-get install python3 python3-venv
 
 # pip yükle
 apt-get install python3-pip
 
-# virtualenv kur
-pip3 install virtualenv
-
 # proje dizini oluştur
 mkdir ...../NagiConfig
-cd ....../NigiConfig
+cd ....../NagiConfig
 
-# dizinin içindeyken (python3 kullanmak için)
-virtualenv -p python3 my_env
+# python3 -m venv my_env
 
 # çalıştır
-source ./my_env/bin/activate
+source my_env/bin/activate
 
 # durdur
 deactivate
