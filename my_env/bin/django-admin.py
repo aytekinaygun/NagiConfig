@@ -1,4 +1,4 @@
-#!/home/aytekin/projeler/NagiConfig/my_env/bin/python3
+#!/var/www/NagiConfig/my_env/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
